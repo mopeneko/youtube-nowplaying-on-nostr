@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube NowPlaying on Nostr
 // @namespace    http://tampermonkey.net/
-// @version      0.0.2
+// @version      0.0.3
 // @description  Post YouTube URL on load YouTube videos
 // @author       https://github.com/mopeneko
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
@@ -37,7 +37,7 @@ window.addEventListener('yt-page-data-fetched', async () => {
         kind: 1,
         created_at: Math.floor(Date.now() / 1000),
         tags: [],
-        content: `Now Playing: ${url}`,
+        content: `Now Playing: ${url}\n#YouTubeNowPlaying`,
     };
 
     const signedEvent = await window.nostr.signEvent(event);
